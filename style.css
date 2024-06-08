@@ -63,6 +63,7 @@ header p {
   background-image: url(Rasmalai-recipe-01.jpg);
 }
 .container .cards p {
+   text-align :center;
   margin-bottom: 2rem;
   max-width: 300px;
   line-height: 1.4;
