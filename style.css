@@ -23,18 +23,30 @@ header {
   position: relative;
   color: #fff;
 }
+
 header p {
   margin-top: 20px;
   max-width: 500px;
   text-align: center;
 }
 
-.container {
-  height: 100vh;
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  flex: 1;
+}
+
 .container .cards {
   flex-direction: row;
 }
+
 .container .cards .card {
   border: 0.6px solid green;
   width: 500px;
@@ -43,55 +55,78 @@ header p {
   margin: 20px;
   font-family: sans-serif;
 }
-.container .cards .card-img, .container .cards .img-four, .container .cards .img-three, .container .cards .img-two, .container .cards .img-one {
+
+.container .cards .card-img, 
+.container .cards .img-four, 
+.container .cards .img-three, 
+.container .cards .img-two, 
+.container .cards .img-one {
   background-repeat: no-repeat;
   background-size: cover;
   width: 100%;
   height: 200px;
   margin-bottom: 20px;
 }
+
 .container .cards .img-one {
   background-image: url(lunchkk.png);
 }
+
 .container .cards .img-two {
   background-image: url(Pakisytani-eid-breakfast.jpg);
 }
+
 .container .cards .img-three {
   background-image: url(biryani.png);
 }
+
 .container .cards .img-four {
   background-image: url(Rasmalai-recipe-01.jpg);
 }
+
 .container .cards p {
-   text-align :center;
+  text-align: center;
   margin-bottom: 2rem;
   max-width: 300px;
   line-height: 1.4;
   color: green;
 }
+
 .container .cards .card-title {
   margin-bottom: 20px;
   color: green;
 }
+
 .container .cards .btn-primary {
   text-decoration: none;
   color: green;
   border: 1px solid black;
   padding: 10px 20px;
-  position: relative; /* add a relative position */
-  overflow: hidden; /* hide the overflow */
+  position: relative;
+  overflow: hidden;
 }
+
 .container .cards .btn-primary::after {
-  content: ""; /* create a pseudo-element */
-  position: absolute; /* absolute position */
-  top: 0; /* top position */
-  left: 0; /* left position */
-  width: 100%; /* full width */
-  height: 100%; /* full height */
-  background-color: #1f5d2b; /* white background */
-  opacity: 0; /* initial opacity */
-  transition: opacity 0.2s ease-in-out; /* smooth transition */
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #1f5d2b;
+  opacity: 0;
+  transition: opacity 0.2s ease-in-out;
 }
+
 .container .cards .btn-primary:hover::after {
-  opacity: 0.2; /* increase the opacity on hover */
-}/*# sourceMappingURL=style.css.map */
+  opacity: 0.2;
+}
+
+footer {
+  width: 100%;
+  background-color: white;
+  color: black;
+  text-align: center;
+  padding: 15px 0;
+  font-size: 14px;
+}
