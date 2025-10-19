@@ -4,6 +4,12 @@
   box-sizing: border-box;
 }
 
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* full height */
+}
+
 .flex-center, .container .cards, header {
   display: flex;
   flex-direction: column;
@@ -20,9 +26,9 @@ header {
   background-repeat: no-repeat;
   width: 100%;
   height: 50vh;
-  position: relative;
   color: #fff;
 }
+
 header p {
   margin-top: 20px;
   max-width: 500px;
@@ -30,68 +36,107 @@ header p {
 }
 
 .container {
-  height: 100vh;
+  flex: 1; /* take remaining vertical space */
+  padding: 20px 0 50px; /* space at bottom for footer */
 }
+
 .container .cards {
   flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
 }
+
 .container .cards .card {
   border: 0.6px solid green;
   width: 500px;
-  height: 600px;
+  min-height: 600px; /* flexible */
   padding: 20px;
   margin: 20px;
   font-family: sans-serif;
 }
-.container .cards .card-img, .container .cards .img-four, .container .cards .img-three, .container .cards .img-two, .container .cards .img-one {
+
+.container .cards .card-img {
   background-repeat: no-repeat;
   background-size: cover;
   width: 100%;
   height: 200px;
   margin-bottom: 20px;
 }
-.container .cards .img-one {
-  background-image: url(lunchkk.png);
-}
-.container .cards .img-two {
-  background-image: url(Pakisytani-eid-breakfast.jpg);
-}
-.container .cards .img-three {
-  background-image: url(biryani.png);
-}
-.container .cards .img-four {
-  background-image: url(Rasmalai-recipe-01.jpg);
-}
+
+.img-one { background-image: url(lunchkk.png); }
+.img-two { background-image: url(Pakisytani-eid-breakfast.jpg); }
+.img-three { background-image: url(biryani.png); }
+.img-four { background-image: url(Rasmalai-recipe-01.jpg); }
+
 .container .cards p {
-   text-align :center;
+  text-align: center;
   margin-bottom: 2rem;
   max-width: 300px;
   line-height: 1.4;
   color: green;
 }
+
 .container .cards .card-title {
   margin-bottom: 20px;
   color: green;
 }
+
 .container .cards .btn-primary {
   text-decoration: none;
   color: green;
   border: 1px solid black;
   padding: 10px 20px;
-  position: relative; /* add a relative position */
-  overflow: hidden; /* hide the overflow */
+  position: relative;
+  overflow: hidden;
 }
+
 .container .cards .btn-primary::after {
-  content: ""; /* create a pseudo-element */
-  position: absolute; /* absolute position */
-  top: 0; /* top position */
-  left: 0; /* left position */
-  width: 100%; /* full width */
-  height: 100%; /* full height */
-  background-color: #1f5d2b; /* white background */
-  opacity: 0; /* initial opacity */
-  transition: opacity 0.2s ease-in-out; /* smooth transition */
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #1f5d2b;
+  opacity: 0;
+  transition: opacity 0.2s ease-in-out;
 }
+
 .container .cards .btn-primary:hover::after {
-  opacity: 0.2; /* increase the opacity on hover */
-}/*# sourceMappingURL=style.css.map */
+  opacity: 0.2;
+}
+
+/* Footer styles */
+footer {
+  background-color: #333;
+  color: #fff;
+  padding: 40px 20px;
+  font-family: sans-serif;
+}
+
+.footer-container {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  max-width: 1200px;
+  margin: auto;
+  text-align: center;
+}
+
+.footer-section {
+  flex: 1 1 250px;
+  margin: 10px;
+}
+
+.footer-section h3,
+.footer-section h4 {
+  margin-bottom: 10px;
+  color: green;
+}
+
+.footer-bottom {
+  text-align: center;
+  padding-top: 20px;
+  border-top: 1px solid #555;
+  font-size: 0.9rem;
+}
