@@ -11,13 +11,26 @@ body {
 }
 
 .flex-center, .container .cards, header {
+:root {
+  --brand: #1f5d2b;
+  --brand-600: #1b5226;
+  --text: #1f2937;
+  --muted: #6b7280;
+  --surface: #ffffff;
+  --bg: #f8fafc;
+  --radius: 14px;
+  --shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+  --shadow-lg: 0 12px 28px rgba(0, 0, 0, 0.12);
+}
+
+.flex-center, header {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: center;
   flex-wrap: wrap;
-  font-family: sans-serif;
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Helvetica Neue, Arial, "Apple Color Emoji", "Segoe UI Emoji";
 }
 
 header {
@@ -33,6 +46,14 @@ header p {
   margin-top: 20px;
   max-width: 500px;
   text-align: center;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background: var(--bg);
+  color: var(--text);
 }
 
 .container {
@@ -59,8 +80,42 @@ header p {
   background-repeat: no-repeat;
   background-size: cover;
   width: 100%;
-  height: 200px;
-  margin-bottom: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 48px 20px;
+  flex: 1;
+}
+
+/* Cards grid */
+.container .cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 24px;
+}
+
+/* Card */
+.container .cards .card {
+  background: var(--surface);
+  border: 1px solid rgba(31, 93, 43, 0.08);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.container .cards .card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+}
+
+/* Media */
+.card-media img {
+  display: block;
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
 }
 
 .img-one { background-image: url(lunchkk.png); }
@@ -73,24 +128,195 @@ header p {
   margin-bottom: 2rem;
   max-width: 300px;
   line-height: 1.4;
-  color: green;
+/* Content */
+.container .cards .card-content {
+  padding: 20px 20px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  text-align: left;
+}
+
+.container .cards p {
+  margin: 0;
+  line-height: 1.6;
+  color: var(--muted);
 }
 
 .container .cards .card-title {
-  margin-bottom: 20px;
+  margin: 0 0 6px 0;
+  font-size: 1.25rem;
+  color: var(--text);
+}
+
+/* Actions */
+.container .cards .card-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 6px;
+  flex-wrap: wrap;
+}
+
+/* Buttons */
+.btn {
+  appearance: none;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 16px;
+  border-radius: 10px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  line-height: 1;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease, transform 0.05s ease;
+  white-space: nowrap;
+  min-height: 44px; /* touch target */
+}
+
+.btn:active {
+  transform: translateY(1px);
+}
+
+.btn:focus-visible {
+  outline: 3px solid var(--brand);
+  outline-offset: 2px;
+}
+
+.btn-primary {
+  background: var(--brand);
+  color: #fff;
+}
+
+.btn-primary:hover {
+  background: var(--brand-600);
+}
+
+.btn-ghost {
+  background: transparent;
+  color: var(--brand);
+  border-color: rgba(31, 93, 43, 0.35);
+}
+
+.btn-ghost:hover {
+  background: rgba(31, 93, 43, 0.06);
+  border-color: rgba(31, 93, 43, 0.55);
+}
+
+/* Motion and small-screen refinements */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+  }
+  .container .cards .card:hover {
+    transform: none;
+  }
+}
+
+@media (max-width: 400px) {
+  .container .cards .card-actions {
+    flex-direction: column;
+  }
+  .container .cards .card-actions .btn {
+    width: 100%;
+  }
+}
+
+.contact-section {
+  padding: 80px 20px;
+  background-color: #f5f5f5;
+  text-align: center;
+  width: 100%;
+}
+
+.contact-section h2 {
   color: green;
+  font-size: 2.5em;
+  margin-bottom: 20px;
+  font-family: sans-serif;
+}
+
+.container .cards .card-title {
+.contact-section p {
+  color: #4b0505;
+  max-width: 600px;
+  margin: 0 auto 40px;
+  font-family: sans-serif;
+}
+
+.contact-container {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.contact-form {
+  background-color: white;
+  padding: 40px;
+  border-radius: 18px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  border: 0.6px solid green;
+}
+
+.form-group {
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: bold;
+  color: green;
+  font-family: sans-serif;
 }
 
 .container .cards .btn-primary {
   text-decoration: none;
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #cccccc;
+  border-radius: 4px;
+  font-size: 1em;
+  transition: border-color 0.3s;
+  font-family: sans-serif;
+}
+
+.form-group textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  border-color: green;
+  outline: none;
+  box-shadow: 0 0 5px rgba(31, 93, 43, 0.3);
+}
+
+.btn-submit {
+  background-color: white;
   color: green;
+  padding: 12px 30px;
   border: 1px solid black;
   padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1.1em;
+  font-weight: bold;
+  letter-spacing: 1px;
+  transition: background-color 0.3s, transform 0.1s;
+  width: 100%;
   position: relative;
   overflow: hidden;
 }
 
 .container .cards .btn-primary::after {
+.btn-submit::after {
   content: "";
   position: absolute;
   top: 0;
@@ -140,3 +366,46 @@ footer {
   border-top: 1px solid #555;
   font-size: 0.9rem;
 }
+.btn-submit:hover::after {
+  opacity: 0.2;
+}
+
+@media (max-width: 768px) {
+  .contact-form {
+    padding: 20px;
+  }
+  
+  .contact-section h2 {
+    font-size: 2em;
+  }
+}
+
+footer {
+  width: 100%;
+  background-color: white;
+  color: black;
+  text-align: center;
+  padding: 15px 0;
+  font-size: 14px;
+}
+
+.about-section {
+    padding: 60px 0;
+    text-align: center;
+    background-color: #f9f9f9;
+}
+
+.about-section h2 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.about-section p {
+    font-size: 1.1rem;
+    color: #666;
+    max-width: 600px;
+    margin: 0 auto 30px;
+}
+
+ 
