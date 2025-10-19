@@ -4,6 +4,13 @@
   box-sizing: border-box;
 }
 
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* full height */
+}
+
+.flex-center, .container .cards, header {
 :root {
   --brand: #1f5d2b;
   --brand-600: #1b5226;
@@ -32,7 +39,6 @@ header {
   background-repeat: no-repeat;
   width: 100%;
   height: 50vh;
-  position: relative;
   color: #fff;
 }
 
@@ -51,6 +57,28 @@ body {
 }
 
 .container {
+  flex: 1; /* take remaining vertical space */
+  padding: 20px 0 50px; /* space at bottom for footer */
+}
+
+.container .cards {
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.container .cards .card {
+  border: 0.6px solid green;
+  width: 500px;
+  min-height: 600px; /* flexible */
+  padding: 20px;
+  margin: 20px;
+  font-family: sans-serif;
+}
+
+.container .cards .card-img {
+  background-repeat: no-repeat;
+  background-size: cover;
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
@@ -90,6 +118,16 @@ body {
   object-fit: cover;
 }
 
+.img-one { background-image: url(lunchkk.png); }
+.img-two { background-image: url(Pakisytani-eid-breakfast.jpg); }
+.img-three { background-image: url(biryani.png); }
+.img-four { background-image: url(Rasmalai-recipe-01.jpg); }
+
+.container .cards p {
+  text-align: center;
+  margin-bottom: 2rem;
+  max-width: 300px;
+  line-height: 1.4;
 /* Content */
 .container .cards .card-content {
   padding: 20px 20px 24px;
@@ -201,6 +239,7 @@ body {
   font-family: sans-serif;
 }
 
+.container .cards .card-title {
 .contact-section p {
   color: #4b0505;
   max-width: 600px;
@@ -234,6 +273,8 @@ body {
   font-family: sans-serif;
 }
 
+.container .cards .btn-primary {
+  text-decoration: none;
 .form-group input,
 .form-group textarea {
   width: 100%;
@@ -262,6 +303,7 @@ body {
   color: green;
   padding: 12px 30px;
   border: 1px solid black;
+  padding: 10px 20px;
   border-radius: 4px;
   cursor: pointer;
   font-size: 1.1em;
@@ -273,6 +315,7 @@ body {
   overflow: hidden;
 }
 
+.container .cards .btn-primary::after {
 .btn-submit::after {
   content: "";
   position: absolute;
@@ -285,6 +328,44 @@ body {
   transition: opacity 0.2s ease-in-out;
 }
 
+.container .cards .btn-primary:hover::after {
+  opacity: 0.2;
+}
+
+/* Footer styles */
+footer {
+  background-color: #333;
+  color: #fff;
+  padding: 40px 20px;
+  font-family: sans-serif;
+}
+
+.footer-container {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  max-width: 1200px;
+  margin: auto;
+  text-align: center;
+}
+
+.footer-section {
+  flex: 1 1 250px;
+  margin: 10px;
+}
+
+.footer-section h3,
+.footer-section h4 {
+  margin-bottom: 10px;
+  color: green;
+}
+
+.footer-bottom {
+  text-align: center;
+  padding-top: 20px;
+  border-top: 1px solid #555;
+  font-size: 0.9rem;
+}
 .btn-submit:hover::after {
   opacity: 0.2;
 }
