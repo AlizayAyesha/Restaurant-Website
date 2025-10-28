@@ -1,21 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="style.css">
-  <title>Our Menus</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">  <!-- This links to the compiled CSS -->
+    <link rel="stylesheet" href="./contact.css">
+    <title>Our Menus</title>
 </head>
 <body>
 
-<header>
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="#home" class="nav-logo">
+        <span class="logo-icon">🍽️</span>
+      </a>
+      <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle menu">
+        <span class="hamburger"></span>
+        <span class="hamburger"></span>
+        <span class="hamburger"></span>
+      </button>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#home" class="nav-link">Home</a></li>
+        <li><a href="#menus" class="nav-link">Menus</a></li>
+        <li><a href="#contact" class="nav-link">Contact</a></li>
+        <li><a href="#footer" class="nav-link">About</a></li>
+        <li><a href="tel:+923001234567" class="nav-btn">Call Now</a></li>
+      </ul>
+    </div>
+  </nav>
+
+<header id="home">
   <h1 class="card-title">OUR MENUS</h1>
   <p>
     Traditional Pakistani / Indian Food - Authentic Taste From Karachi all Halal Pakistani Food. Biryani, Nihari, Haleem, Halal Chinese, Tikka Bihari Kabab, Halwa poori, Mutton karahi, Rasmalai.
   </p>
 </header>
 
-<section class="container">
+<section id="menus" class="container">
   <div class="cards">
 
     <div class="card">
@@ -61,38 +82,6 @@
   </div>
 </section>
 
-<footer>
-  <div class="footer-container">
-    <div class="footer-section">
-      <h3>Our Restaurant</h3>
-      <p>Authentic Indian Food</p>
-    </div>
-    <div class="footer-section">
-      <h4>Contact</h4>
-      <p>Address: Karachi, Pakistan</p>
-      <p>Phone: +92 300 1234567</p>
-      <p>Email: info@restaurant.com</p>
-    </div>
-    <div class="footer-section">
-      <h4>Follow Us</h4>
-      <p>Facebook | Instagram | Twitter</p>
-    </div>
-  </div>
-  <div class="footer-bottom">
-    &copy; 2025 Our Restaurant. All rights reserved.
-  </div>
-</footer>
-
-</body>
-</html>
-    <!-- About Section Start -->
-    <section class="about-section">
-       <div class="container">
-        <h2>About Us</h2>
-        <p>Welcome to [Restaurant Name]! We offer the finest dishes crafted with fresh ingredients and love. Our mission is to provide a memorable dining experience for every guest.</p>
-       </div>
-    </section>
-<!-- About Section End -->
     <section class="container">
             <div class="cards">
                 <article class="card">
@@ -186,12 +175,92 @@
             </div>
         </section>
 
-        <footer style="text-align: center;">
-            <p>© <span id="year"></span> All Rights Reserved. </p><p>Developed by </p><p style="font-size:large;; color:rgb(91, 57, 123);"><b><i>(-:    Alizay Ayesha :-) </p></b></i>
-            <br>
-        </footer>
+<!-- Footer Section -->
+<footer id="footer">
+  <div class="footer-container">
+    <div class="footer-section">
+      <h3>About Us</h3>
+      <p>Welcome to [Restaurant Name]! We offer the finest dishes crafted with fresh ingredients and love. Our mission is to provide a memorable dining experience for every guest.</p>
+    </div>
+    <div class="footer-section">
+      <h3>Our Restaurant</h3>
+      <p>Authentic Indian Food</p>
+    </div>
+    <div class="footer-section">
+      <h4>Contact</h4>
+      <p>Address: Karachi, Pakistan</p>
+      <p>Phone: +92 300 1234567</p>
+      <p>Email: info@restaurant.com</p>
+    </div>
+    <div class="footer-section">
+      <h4>Follow Us</h4>
+      <p>Facebook | Instagram | Twitter</p>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy; <span id="year"></span> All Rights Reserved.</p>
+    <p>Developed by</p>
+    <p style="font-size: large; color: rgb(91, 57, 123);"><b><i>(-: Alizay Ayesha :-)</i></b></p>
+  </div>
+</footer>
 </body>
 <script>
+      // Set current year
       document.getElementById("year").textContent = new Date().getFullYear();
+      
+      // Mobile menu toggle
+      const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+      const navLinks = document.getElementById('navLinks');
+      
+      mobileMenuToggle.addEventListener('click', function() {
+        navLinks.classList.toggle('active');
+        mobileMenuToggle.classList.toggle('active');
+      });
+      
+      // Close mobile menu when clicking on a link
+      document.querySelectorAll('.nav-link, .nav-btn').forEach(link => {
+        link.addEventListener('click', function() {
+          navLinks.classList.remove('active');
+          mobileMenuToggle.classList.remove('active');
+        });
+      });
+      
+      // Smooth scrolling for anchor links
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+          e.preventDefault();
+          const target = document.querySelector(this.getAttribute('href'));
+          if (target) {
+            const navHeight = document.querySelector('.navbar').offsetHeight;
+            const targetPosition = target.offsetTop - navHeight;
+            window.scrollTo({
+              top: targetPosition,
+              behavior: 'smooth'
+            });
+          }
+        });
+      });
+      
+      // Active nav link on scroll
+      window.addEventListener('scroll', function() {
+        const sections = document.querySelectorAll('section[id], header[id], footer[id]');
+        const navLinks = document.querySelectorAll('.nav-link');
+        
+        let current = '';
+        sections.forEach(section => {
+          const sectionTop = section.offsetTop;
+          const sectionHeight = section.clientHeight;
+          if (scrollY >= (sectionTop - 100)) {
+            current = section.getAttribute('id');
+          }
+        });
+        
+        navLinks.forEach(link => {
+          link.classList.remove('active');
+          if (link.getAttribute('href') === '#' + current) {
+            link.classList.add('active');
+          }
+        });
+      });
 </script>
 </html>
