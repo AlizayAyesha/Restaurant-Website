@@ -231,6 +231,11 @@ body {
   transform: rotate(-45deg) translate(7px, -7px);
 }
 
+#menus-scroller{
+  text-decoration: none;
+  color: white;
+}
+
 .nav-links {
   display: flex;
   align-items: center;
